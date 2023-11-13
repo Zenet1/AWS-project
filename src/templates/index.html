@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>
+        Universidad API
+    </h1>
+    <h2>
+        Esta API es utilizada como un CRUD para las entidades 'Alumno' y 'Profesor'. Se pueden recuperar todos los registros o registros particulares, insertar, actualizar y eliminar registros de ambas entidades.
+    </h2>
+
+    <h2>
+        Estos son los siguientes Endpoints disponibles:
+    </h2>
+    <h3>Alumnos:</h3>
+    <ul>
+        <li>GET '/alumnos': Devuelve una lista de todos los alumnos registrados</li>
+        <li>GET '/alumnos/{id}': Devuelve un único registro del alumno con la id especificada</li>
+        <li>POST '/alumnos': Inserta un registro de un alumno con los datos especificados en la petición</li>
+        <li>PUT '/alumnos/{id}': Actualiza el registro de un alumno particular, con los datos especificados en la petición</li>
+        <li>DELETE '/alumnos/{id}': Elimina el registro del alumno con la id especificada</li>
+    </ul>
+    <h3>Profesores:</h3>
+    <ul>
+        <li>GET '/profesores': Devuelve una lista de todos los profesores registrados</li>
+        <li>GET '/profesores/{id}': Devuelve un único registro del profesores con la id especificada</li>
+        <li>POST '/profesores': Inserta un registro de un profesor con los datos especificados en la petición</li>
+        <li>PUT '/profesores/{id}': Actualiza el registro de un profesor particular, con los datos especificados en la petición</li>
+        <li>DELETE '/profesores/{id}': Elimina el registro del profesor con la id especificada</li>
+    </ul>
+</body>
+</html>
