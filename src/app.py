@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from utils.config import database_connection_uri
+from utils.dbConfig import database_connection_uri
 from utils.db import ConexionDB
 from alumnos.infraestructure.AlumnoRoute import alumnos
 from profesores.infraestructure.ProfesorRoute import profesores

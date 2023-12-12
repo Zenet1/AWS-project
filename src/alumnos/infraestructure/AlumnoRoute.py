@@ -1,4 +1,4 @@
-from alumnos.domain.AlumnoService import getAllAlumnos, getAlumnoByID, insertAlumno, updateAlumno, deleteAlumno
+from alumnos.domain.AlumnoService import getAllAlumnos, getAlumnoByID, insertAlumno, updateAlumno, deleteAlumno, uploadAlumnoPhoto
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for
 
 alumnos = Blueprint('alumnos', __name__)
@@ -47,5 +47,45 @@ def actualizar_alumno(id):
 @alumnos.route('/alumnos/<id>', methods = ['DELETE'])
 def eliminar_alumno(id):
     response = deleteAlumno(id)
+    
+    return jsonify(response.get('responseBody')), response.get('statusCode')
+
+# Ruta 'POST /alumnos/<id>/fotoPerfil': Acepta una imagen para su inclusión en un bucket público en Amazon S3, actualiza el registro para contener la url
+# Aceptar 'multipart/form-data'
+
+@alumnos.route('/alumnos/<id>/fotoPerfil', methods = ['POST'])
+def subir_foto(id):
+    response = uploadAlumnoPhoto(id, request)
+    
+    return jsonify(response.get('responseBody')), response.get('statusCode')
+
+# Ruta 'POST /alumnos/<id>/email': Envía una alerta de SNS a un correo 'suscriptor'
+
+@alumnos.route('/alumnos/<id>/email', methods = ['POST'])
+def enviar_alerta(id):
+    response = updateAlumno(id, request.json)
+    
+    return jsonify(response.get('responseBody')), response.get('statusCode')
+
+# Ruta 'POST /alumnos/<id>/session/login': Registra una entrada en una tabla en DynamoDB con la información de la sesión del alumno
+
+@alumnos.route('/alumnos/<id>/session/login', methods = ['POST'])
+def iniciar_sesion(id):
+    response = updateAlumno(id, request.json)
+    
+    return jsonify(response.get('responseBody')), response.get('statusCode')
+
+# Ruta 'POST /alumnos/<id>/session/verify': Valida si la sesión es válida y si está activa
+
+@alumnos.route('/alumnos/<id>/session/verify', methods = ['POST'])
+def validar_sesion(id):
+    response = updateAlumno(id, request.json)
+    
+    return jsonify(response.get('responseBody')), response.get('statusCode')
+
+# Ruta 'POST /alumnos/<id>/session/logout': Desactiva la sesión
+@alumnos.route('/alumnos/<id>/session/logout', methods = ['POST'])
+def cerrar_sesion(id):
+    response = updateAlumno(id, request.json)
     
     return jsonify(response.get('responseBody')), response.get('statusCode')
