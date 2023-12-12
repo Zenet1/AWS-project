@@ -54,7 +54,13 @@ def insertProfesor(profesorData):
             ConexionDB.session.commit()
             
             statusCode = 201
-            responseBody = 'Insertion completed'
+            responseBody = {
+            'id': nuevo_profesor.IDProfesor,
+            'nombres': nuevo_profesor.nombres,
+            'apellidos': nuevo_profesor.apellidos,
+            'numeroEmpleado': nuevo_profesor.numeroEmpleado,
+            'horasClase': nuevo_profesor.horasClase
+            }
             
         except SQLAlchemyError as e:
             statusCode = 500
@@ -79,7 +85,7 @@ def updateProfesor(id, profesorData):
                 statusCode = 200
                 responseBody = "Succesfully updated"
                 
-                profesor_toUpdate.nombres = profesorData.get('nombre_pronombresfesor')
+                profesor_toUpdate.nombres = profesorData.get('nombres')
                 profesor_toUpdate.apellidos = profesorData.get('apellidos')
                 profesor_toUpdate.numeroEmpleado = profesorData.get('numeroEmpleado')
                 profesor_toUpdate.horasClase = profesorData.get('horasClase')

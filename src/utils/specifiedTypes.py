@@ -1,17 +1,18 @@
-alumno_keys = {'id', 'nombres', 'apellidos', 'matricula', 'promedio'}
+alumno_keys = {'nombres', 'apellidos', 'matricula', 'promedio', 'password'}
 
-profesor_keys = {'id', 'numeroEmpleado', 'nombres', 'apellidos', 'horasClase'}
+profesor_keys = {'numeroEmpleado', 'nombres', 'apellidos', 'horasClase'}
 
 alumno_types = {
     'nombres': str,
     'apellidos': str,
     'matricula': str,
-    'promedio': float
+    'promedio': float,
+    'password': str
 }
 
 profesor_types = {
-    'numeroEmpleado': int,
     'nombres': str,
     'apellidos': str,
+    'numeroEmpleado': int,
     'horasClase': int
 }

@@ -9,7 +9,8 @@ def getAllAlumnos():
                      'nombres': alumno.nombres,
                      'apellidos': alumno.apellidos,
                      'matricula': alumno.matricula,
-                     'promedio': alumno.promedio} for alumno in alumnos
+                     'promedio': alumno.promedio,
+                     'password': alumno.password} for alumno in alumnos
                     ]
 
     return {'alumnos': alumnos_list, 'statusCode': 200}
@@ -32,7 +33,8 @@ def getAlumnoByID(id):
             'nombres': alumno_founded.nombres,
             'apellidos': alumno_founded.apellidos,
             'matricula': alumno_founded.matricula,
-            'promedio': alumno_founded.promedio
+            'promedio': alumno_founded.promedio,
+            'password': alumno_founded.password
             }
             
     except SQLAlchemyError as e:
@@ -49,12 +51,19 @@ def insertAlumno(alumnoData):
     if verifyData(alumnoData, 'alumno'):
         
         try:
-            nuevo_alumno = Alumno(alumnoData.get('nombres'), alumnoData.get('apellidos'), alumnoData.get('matricula'), alumnoData.get('promedio'))
+            nuevo_alumno = Alumno(alumnoData.get('nombres'), alumnoData.get('apellidos'), alumnoData.get('matricula'), alumnoData.get('promedio'), alumnoData.get('password'))
             ConexionDB.session.add(nuevo_alumno)
             ConexionDB.session.commit()
             
             statusCode = 201
-            responseBody = 'Insertion completed'
+            responseBody = {
+            'id': nuevo_alumno.IDAlumno,
+            'nombres': nuevo_alumno.nombres,
+            'apellidos': nuevo_alumno.apellidos,
+            'matricula': nuevo_alumno.matricula,
+            'promedio': nuevo_alumno.promedio,
+            'password': nuevo_alumno.password
+            }
             
         except SQLAlchemyError as e:
             statusCode = 500
@@ -83,6 +92,7 @@ def updateAlumno(id, alumnoData):
                 alumno_toUpdate.apellidos = alumnoData.get('apellidos')
                 alumno_toUpdate.matricula = alumnoData.get('matricula')
                 alumno_toUpdate.promedio = alumnoData.get('promedio')
+                alumno_toUpdate.password = alumnoData.get('password')
                 ConexionDB.session.commit()
                 
         except SQLAlchemyError as e:
