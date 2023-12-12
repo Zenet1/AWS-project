@@ -1,0 +1,32 @@
+# ejemplo de request para alumnos
+
+{
+    "nombre_alumno": "Julio",
+    "apellidos_alumno": "Gonzalez",
+    "matricula": "A16003210",
+    "promedio": 100.0
+}
+
+
+{
+    "nombre_alumno": "Eduardo",
+    "apellidos_alumno": "Lopez",
+    "matricula": "A16003210",
+    "promedio": 100.0
+}
+
+# ejemplo de request para profesores
+
+{
+    "nombre_profesor": "Julion",
+    "apellidos_profesor": "Alvarez",
+    "numero_empleado": "10",
+    "horas_clase": 24
+}
+
+{
+    "numero_empleado": 10,
+    "nombre_profesor": "Rodrigo",
+    "apellidos_profesor": "Herrera",
+    "horas_clase": 23
+}

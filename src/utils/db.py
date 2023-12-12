@@ -1,3 +1,3 @@
-alumnoDB = []
+from flask_sqlalchemy import SQLAlchemy
 
-profesorDB = []
+ConexionDB = SQLAlchemy()

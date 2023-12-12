@@ -1,4 +1,4 @@
-from alumnos.AlumnoService import getAllAlumnos, getAlumnoByID, insertAlumno, updateAlumno, deleteAlumno
+from alumnos.domain.AlumnoService import getAllAlumnos, getAlumnoByID, insertAlumno, updateAlumno, deleteAlumno
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for
 
 alumnos = Blueprint('alumnos', __name__)

@@ -3,7 +3,6 @@ alumno_keys = {'id', 'nombres', 'apellidos', 'matricula', 'promedio'}
 profesor_keys = {'id', 'numeroEmpleado', 'nombres', 'apellidos', 'horasClase'}
 
 alumno_types = {
-    'id': int,
     'nombres': str,
     'apellidos': str,
     'matricula': str,
@@ -11,7 +10,6 @@ alumno_types = {
 }
 
 profesor_types = {
-    'id': int,
     'numeroEmpleado': int,
     'nombres': str,
     'apellidos': str,

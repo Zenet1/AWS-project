@@ -18,6 +18,7 @@ def verifyKeys(data, correctKeys):
             status = 0
     else:
         status = 0
+
     return status
     
 def verifyValues(data, correctTypes):

@@ -1,4 +1,4 @@
-from profesores.ProfesorService import getAllProfesores, getProfesorByID, insertProfesor, updateProfesor, deleteProfesor
+from profesores.domain.ProfesorService import getAllProfesores, getProfesorByID, insertProfesor, updateProfesor, deleteProfesor
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for
 
 profesores = Blueprint('profesores', __name__)
