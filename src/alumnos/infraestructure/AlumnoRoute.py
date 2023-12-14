@@ -1,5 +1,6 @@
-from alumnos.domain.AlumnoService import getAllAlumnos, getAlumnoByID, insertAlumno, updateAlumno, deleteAlumno, uploadAlumnoPhoto
+from alumnos.domain.AlumnoService import getAllAlumnos, getAlumnoByID, insertAlumno, updateAlumno, deleteAlumno, uploadAlumnoPhoto, sendAlert, loginAlumno, verifySessionAlumno, logoutAlumno
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for
+import json
 
 alumnos = Blueprint('alumnos', __name__)
 
@@ -63,7 +64,7 @@ def subir_foto(id):
 
 @alumnos.route('/alumnos/<id>/email', methods = ['POST'])
 def enviar_alerta(id):
-    response = updateAlumno(id, request.json)
+    response = sendAlert(id)
     
     return jsonify(response.get('responseBody')), response.get('statusCode')
 
@@ -71,7 +72,7 @@ def enviar_alerta(id):
 
 @alumnos.route('/alumnos/<id>/session/login', methods = ['POST'])
 def iniciar_sesion(id):
-    response = updateAlumno(id, request.json)
+    response = loginAlumno(id, request.json)
     
     return jsonify(response.get('responseBody')), response.get('statusCode')
 
@@ -79,13 +80,13 @@ def iniciar_sesion(id):
 
 @alumnos.route('/alumnos/<id>/session/verify', methods = ['POST'])
 def validar_sesion(id):
-    response = updateAlumno(id, request.json)
+    response = verifySessionAlumno(id, request.json)
     
     return jsonify(response.get('responseBody')), response.get('statusCode')
 
 # Ruta 'POST /alumnos/<id>/session/logout': Desactiva la sesión
 @alumnos.route('/alumnos/<id>/session/logout', methods = ['POST'])
 def cerrar_sesion(id):
-    response = updateAlumno(id, request.json)
+    response = logoutAlumno(id, request.json)
     
     return jsonify(response.get('responseBody')), response.get('statusCode')
