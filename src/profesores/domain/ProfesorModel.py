@@ -13,3 +13,4 @@ class Profesor(ConexionDB.Model):
         self.apellidos = apellidos
         self.numeroEmpleado = numeroEmpleado
         self.horasClase = horasClase
+

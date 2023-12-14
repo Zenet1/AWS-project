@@ -9,4 +9,4 @@ servidor = os.environ['DB_HOST']
 puerto = os.environ['DB_PORT']
 db = os.environ['DB_NAME']
 
-database_connection_uri = f'mysql://{usuario}:{password}@{servidor}/{db}'
+database_connection_uri = f'mysql+pymysql://{usuario}:{password}@{servidor}/{db}'
