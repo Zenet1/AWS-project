@@ -156,7 +156,6 @@ def uploadAlumnoPhoto(id, alumnoData):
         
         alumno_toUpdate.fotoPerfilUrl = fotoUrl
         ConexionDB.session.commit()
-        statusCode = 201
         statusCode = 200
         responseBody = {'response': 'Succesfully uploaded', 'fotoPerfilUrl': fotoUrl}
         
