@@ -9,10 +9,10 @@ def index():
 # Error handlers
 
 def pagina_no_encontrada(error):
-    return "Ou", 404
+    return "ERROR: Página no encontrada", 404
 
 def metodo_invalido(error):
-    return "Ou invalido", 405
+    return "ERROR: Método inválido", 405
 
 with app.app_context():
         ConexionDB.create_all()    
